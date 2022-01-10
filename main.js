@@ -25,8 +25,18 @@ function googleSignin() {
       var errorCode = error.code;
       var errorMessage = error.message;
 		
-      alert(error.code);
-      alert(error.message);
+      console.log(error.code);
+      console.log(error.message);
+   });
+}
+
+function googleSignout() {
+   firebase.auth().signOut()
+	
+   .then(function() {
+      console.log('Signout Succesfull');
+   }, function(error) {
+      console.log('Signout Failed');  
    });
 }
 
@@ -36,8 +46,12 @@ firebase.auth().onAuthStateChanged(user => {
 
             var Fuid = user.uid;
             Duid = "User/"+(Fuid);
-
-	
+  document.getElementById("uid").innerHTML= Fuid;
+  document.getElementById("uname").innerHTML= user.displayName;
+  document.getElementById("uemail").innerHTML= user.email;
+  document.getElementById("uphoto").src = user.photoURL;
+  alert(user.photoURL);
+			
 			}
 
       else {
@@ -45,3 +59,4 @@ firebase.auth().onAuthStateChanged(user => {
       }
 
     });
+
