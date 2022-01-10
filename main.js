@@ -29,3 +29,19 @@ function googleSignin() {
       alert(error.message);
    });
 }
+
+
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+
+            var Fuid = user.uid;
+            Duid = "User/"+(Fuid);
+
+		window.location.href = "/index.html";	
+			}
+
+      else {
+      
+      }
+
+    });
