@@ -37,7 +37,7 @@ firebase.auth().onAuthStateChanged(user => {
             var Fuid = user.uid;
             Duid = "User/"+(Fuid);
 
-		window.location.href = "/index.html";	
+	
 			}
 
       else {
