@@ -35,7 +35,7 @@ function googleSignin() {
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
 
-            location.href ="/index.html";
+            location.href ="/p/index.html";
 			
 			}
 
