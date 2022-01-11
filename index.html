@@ -1,0 +1,83 @@
+
+<html>
+  <head>
+	  </head>
+
+  <body>
+	
+
+
+    <img id="uphoto" src=""/>
+	<p id="uid"></p>
+	<p id="uname"></p>
+	<p id="uemail"></p>
+
+	
+
+	<button onclick="googleSingIn()">sing in</button>
+	
+	<button onclick = "googleSignout()">out</button>
+	
+	
+	<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+	
+<script>
+    var config = {
+    apiKey: "AIzaSyCWGbJi9qeD7h6BPhAKBoWupHv21Tge3ck",
+  authDomain: "effort-5efac.firebaseapp.com",
+  databaseURL: "https://effort-5efac.firebaseio.com",
+  projectId: "effort-5efac",
+  storageBucket: "effort-5efac.appspot.com",
+  messagingSenderId: "771931121287",
+  appId: "1:771931121287:web:9fe9abdcab7c369f277a22",
+  measurementId: "G-GLD9CY5VPF"};
+firebase.initializeApp(config);
+
+googleSingIn=()=>{
+
+base_provider = new firebase.auth.GoogleAuthProvider();
+
+firebase.auth().signInWithRedirect(base_provider).then(function(result){
+console.log(result);
+alert(4);
+}).eatch(function(err){
+alert(0);
+});
+}
+
+
+
+function googleSignout() {
+   firebase.auth().signOut()
+	
+   .then(function() {
+      console.log('Signout Succesfull');
+   }, function(error) {
+      console.log('Signout Failed');  
+   });
+}
+
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+            var Fuid = user.uid;
+            Duid = "User/"+(Fuid);
+  document.getElementById("uid").innerHTML= Fuid;
+  document.getElementById("uname").innerHTML= user.displayName;
+  document.getElementById("uemail").innerHTML= user.email;
+  document.getElementById("uphoto").src = user.photoURL;
+  alert(user.photoURL);
+			
+			}
+
+      else {
+      
+      }
+
+    });
+
+</script></body>
+
+</html>
+
+
+ 
